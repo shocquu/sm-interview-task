@@ -1,27 +1,69 @@
-# React + TypeScript + Vite
+# React Form with Ant Design
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple React project that demonstrates the use of Ant Design to create a form with validation. The form includes various fields and validation rules, and it also adjusts font size based on the user's age.
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-v18-blue) ![AntDesign](https://img.shields.io/badge/AntDesign-v5-red)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Overview
 
-## Expanding the ESLint configuration
+The project includes the following features:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+-   A form with fields for selecting a continent, entering a name, surname, and date of birth.
+-   Validation rules for the form fields.
+-   Dynamic font size adjustment based on the user's age.
+-   Styling with Ant Design components.
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+Follow these steps to get the project up and running on your local machine:
+
+1. Clone this repository to your local system.
+
+2. Navigate to the project directory in your terminal.
+
+3. Install the project dependencies using npm or yarn:
+
+    ```bash
+    npm install
+    ```
+
+    or
+
+    ```bash
+    yarn install
+    ```
+
+4. Start the development server:
+
+    ```bash
+    npm start
+    ```
+
+    or
+
+    ```bash
+    yarn start
+    ```
+
+5. Open your web browser and go to http://localhost:5173 to view the application.
+
+## Technologies Used
+
+-   React: The JavaScript library for building user interfaces.
+-   Ant Design: A popular React UI library for styling and form components.
+-   dayjs: A library for handling dates and times.
+-   Jest and React Testing Library: Used for writing and running unit tests.
+
+## Running tests
+
+To run the unit tests for the application, use the following commands:
+
+```bash
+npm test
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+or
+
+```bash
+yarn test
+```

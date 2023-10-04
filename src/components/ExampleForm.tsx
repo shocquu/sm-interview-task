@@ -18,7 +18,7 @@ type FormData = {
 };
 
 const initialValues: FormData = {
-    [FormItemName.Continent]: continents.Europe,
+    [FormItemName.Continent]: continents.asia,
     [FormItemName.Name]: '',
     [FormItemName.Surname]: undefined,
     [FormItemName.BirthDate]: undefined,
@@ -26,10 +26,6 @@ const initialValues: FormData = {
 
 const { Option } = Select;
 const { useForm, useWatch } = Form;
-
-const validateMessages = {
-    required: 'To pole jest wymagane',
-};
 
 type ExampleFormProps = {
     setLarger: React.Dispatch<React.SetStateAction<boolean>>;
@@ -40,6 +36,15 @@ const ExampleForm = ({ setLarger }: ExampleFormProps) => {
     const [form] = useForm();
 
     const birthDateWatch = useWatch([FormItemName.BirthDate], form);
+
+    useEffect(() => {
+        const now = dayjs();
+        const selectedDate = dayjs(birthDateWatch);
+        const age = now.diff(selectedDate, 'years');
+
+        setLarger(age > 60);
+        setDisabled(selectedDate.isAfter(now));
+    }, [birthDateWatch, setLarger]);
 
     const onFinish = () => {
         alert('sukces');
@@ -55,26 +60,16 @@ const ExampleForm = ({ setLarger }: ExampleFormProps) => {
         return Promise.resolve();
     };
 
-    useEffect(() => {
-        const now = dayjs();
-        const selectedDate = dayjs(birthDateWatch);
-        const age = now.diff(selectedDate, 'years');
-
-        setLarger(age > 60);
-        setDisabled(selectedDate.isAfter(now));
-    }, [birthDateWatch, setLarger]);
-
     return (
         <Form
             form={form}
             initialValues={initialValues}
-            validateMessages={validateMessages}
             validateTrigger={['onSubmit']}
             layout='vertical'
             name='example'
             onFinish={onFinish}>
             <Form.Item name={FormItemName.Continent} label='Kontynent' rules={[{ validator: validateName }]}>
-                <Select placeholder='Wybierz kontynent' allowClear>
+                <Select data-testid='example_continents' placeholder='Wybierz kontynent' allowClear>
                     {Object.entries(continents).map(([key, value]) => (
                         <Option key={key} value={key}>
                             {value}
@@ -89,7 +84,12 @@ const ExampleForm = ({ setLarger }: ExampleFormProps) => {
                 <Input />
             </Form.Item>
             <Form.Item name={FormItemName.BirthDate} label='Data urodzenia'>
-                <DatePicker placeholder='Wybierz datę' format='DD-MM-YYYY' style={{ width: '100%' }} />
+                <DatePicker
+                    data-testid='example_birthDate'
+                    placeholder='Wybierz datę'
+                    format='DD-MM-YYYY'
+                    style={{ width: '100%' }}
+                />
             </Form.Item>
             <Form.Item>
                 <Button type='primary' htmlType='submit' disabled={disabled}>
