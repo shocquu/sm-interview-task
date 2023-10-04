@@ -2,7 +2,7 @@
 
 This is a simple React project that demonstrates the use of Ant Design to create a form with validation. The form includes various fields and validation rules, and it also adjusts font size based on the user's age.
 
-![React](https://img.shields.io/badge/React-v18-blue) ![AntDesign](https://img.shields.io/badge/AntDesign-v5-red)
+![React](https://img.shields.io/badge/React-v18.2.0-blue) ![AntDesign](https://img.shields.io/badge/AntDesign-v5.9.4-red)
 
 ## Project Overview
 

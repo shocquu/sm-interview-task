@@ -78,7 +78,7 @@ const ExampleForm = ({ setLarger }: ExampleFormProps) => {
                 </Select>
             </Form.Item>
             <Form.Item name={FormItemName.Name} label='Imię' rules={[{ required: true }]}>
-                <Input />
+                <Input data-testid='example_name' />
             </Form.Item>
             <Form.Item name={FormItemName.Surname} label='Nazwisko'>
                 <Input />
