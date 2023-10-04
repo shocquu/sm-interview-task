@@ -31,7 +31,11 @@ const validateMessages = {
     required: 'To pole jest wymagane',
 };
 
-const ExampleForm = () => {
+type ExampleFormProps = {
+    setLarger: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const ExampleForm = ({ setLarger }: ExampleFormProps) => {
     const [disabled, setDisabled] = useState(false);
     const [form] = useForm();
 
@@ -54,10 +58,11 @@ const ExampleForm = () => {
     useEffect(() => {
         const now = dayjs();
         const selectedDate = dayjs(birthDateWatch);
+        const age = now.diff(selectedDate, 'years');
 
-        // const yearsDiff = now.diff(selectedDate, 'years');
+        setLarger(age > 60);
         setDisabled(selectedDate.isAfter(now));
-    }, [birthDateWatch]);
+    }, [birthDateWatch, setLarger]);
 
     return (
         <Form
