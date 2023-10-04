@@ -72,7 +72,6 @@ const ExampleForm = ({ setLarger }: ExampleFormProps) => {
             validateTrigger={['onSubmit']}
             layout='vertical'
             name='example'
-            style={{ maxWidth: 400 }}
             onFinish={onFinish}>
             <Form.Item name={FormItemName.Continent} label='Kontynent' rules={[{ validator: validateName }]}>
                 <Select placeholder='Wybierz kontynent' allowClear>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ConfigProvider, theme } from 'antd';
+import { ConfigProvider, theme, Card, Row, Col } from 'antd';
 import { ExampleForm } from '@/components';
 
 const { useToken } = theme;
@@ -15,7 +15,13 @@ function App() {
                     fontSize: larger ? 2 * token.fontSize : token.fontSize,
                 },
             }}>
-            <ExampleForm setLarger={setLarger} />
+            <Row align='middle' justify='center' style={{ height: '100vh', backgroundColor: '#fafafa' }}>
+                <Col>
+                    <Card style={{ width: 400 }}>
+                        <ExampleForm setLarger={setLarger} />
+                    </Card>
+                </Col>
+            </Row>
         </ConfigProvider>
     );
 }
